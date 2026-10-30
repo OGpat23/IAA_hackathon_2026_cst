@@ -1,0 +1,25 @@
+line,scenario,factor_vs_submitted
+motor,trend = developed only,0.9858920604805521
+motor,trend = emerging only,1.0111047932907433
+motor,emerging-only model (A),0.9395065880065391
+motor,pure carry-over (P),0.9584665008957964
+motor,CV pred/actual (calibrated),0.998679314439898
+motor,back-test pred/actual 2024,0.9575911160401246
+motor,level = 2024 experience only,1.0019751286948952
+motor,no new-business calibration,0.9456071003000021
+buildings,trend = developed only,0.9955916842972025
+buildings,trend = emerging only,1.023261114482183
+buildings,emerging-only model (A),0.9933553694084195
+buildings,pure carry-over (P),0.9807580945312102
+buildings,CV pred/actual (calibrated),1.0035106981387407
+buildings,back-test pred/actual 2024,1.6909946813567105
+buildings,level = 2024 experience only,0.7500101501772732
+buildings,no new-business calibration,0.9896736489875603
+contents,trend = developed only,1.004452590972761
+contents,trend = emerging only,0.9753759323832769
+contents,emerging-only model (A),0.9672422628281833
+contents,pure carry-over (P),0.9389679609958275
+contents,CV pred/actual (calibrated),0.9751833917248667
+contents,back-test pred/actual 2024,0.9790118279754023
+contents,level = 2024 experience only,0.9809379418699306
+contents,no new-business calibration,0.9446228213622987

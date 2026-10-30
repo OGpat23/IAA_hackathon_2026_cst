@@ -1,0 +1,94 @@
+{
+  "script": "week2_emerging.py",
+  "run_seconds": 143.4,
+  "smoke": false,
+  "seeds": [
+    42,
+    7,
+    2025,
+    11,
+    99
+  ],
+  "data_md5": {
+    "addresses (1).parquet": "aad04b143389215e099a3414d7926162",
+    "claims.parquet": "5ebd52402ed7c81c16de9ee54babd707",
+    "customers.parquet": "cc5e71468d171919920d88501c826c20",
+    "expenses.parquet": "69b733e228548e890136c71a549045bf",
+    "policies_buildings.parquet": "b485efa7f62c5eaa8b259e2ce4b300f5",
+    "policies_contents.parquet": "cd86fbf03087a5921d95084423701be5",
+    "policies_motor.parquet": "d1ee538b69fac149ba0a167ea42b02b6",
+    "reference_policies.parquet": "df3b1125d0a3b31281c9fae28a56c89e",
+    "sample_submission.parquet": "fde7fa93b9907e72f581a2ae7e513aba",
+    "test_buildings.parquet": "cd5dd9164d3c6690c20a3ee1b77b4c70",
+    "test_contents.parquet": "00503445baaa28ac422f79024e5bef51",
+    "test_motor.parquet": "fbed8ecced3bc7eba78dadb09099f804",
+    "weather.parquet": "d86d473ef1f478ebf146a2c1e6074a1a"
+  },
+  "trends_pa": {
+    "motor": 0.0633,
+    "buildings": 0.063,
+    "contents": 0.0186
+  },
+  "blend_weights": {
+    "motor": {
+      "A": 0.3,
+      "B": 0.0,
+      "C": 0.0,
+      "P": 0.7
+    },
+    "buildings": {
+      "A": 0.2,
+      "B": 0.0,
+      "C": 0.0,
+      "P": 0.8
+    },
+    "contents": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0,
+      "P": 1.0
+    }
+  },
+  "nb_calibration": {
+    "motor": {
+      "True": 1.0496033764698356,
+      "False": 0.9930584048650924
+    },
+    "buildings": {
+      "True": 1.0144399862849098,
+      "False": 0.9953656768942726
+    },
+    "contents": {
+      "True": 1.0779422520925,
+      "False": 0.9803688194780696
+    }
+  },
+  "cv_d2_testmix": {
+    "exp_rate": 0.1048,
+    "pred_A": 0.11881,
+    "pred_B": 0.12371,
+    "pred_C": 0.12858,
+    "pred_P": 0.13424,
+    "pred_blend": 0.13546,
+    "pred_blend_cal": 0.13738
+  },
+  "backtest_d2_testmix": {
+    "pred_A": 0.1208,
+    "pred_B": 0.12698,
+    "pred_C": 0.13319,
+    "pred_P": 0.14403,
+    "pred_blend": 0.14385,
+    "pred_blend_cal": 0.14351
+  },
+  "leak_features_dropped": [
+    "customer_service_contacts"
+  ],
+  "guardrail_overrides": {
+    "prior_log": "developed-market risk score built only from vetted inputs (customer_service_contacts excluded); any genuine risk score separates claim / claim-free rows, so the leak heuristic does not apply to model outputs (reviewed 2026-10-27, motor PSI 0.029)"
+  },
+  "submission": {
+    "rows": 209063,
+    "mean": 354.5765122982068,
+    "path": "submission_week2.csv"
+  }
+}

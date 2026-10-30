@@ -1,0 +1,39 @@
+market,split,line,issue,rows
+emerging,train,motor,exposure > 1 (days / 370-day rows) -> recomputed from dates,189
+emerging,train,buildings,exposure > 1 (days / 370-day rows) -> recomputed from dates,117
+emerging,train,buildings,sum_insured ~1000x too large -> /1000,53
+emerging,train,buildings,construction_type BRK/STN/WOD/MIX codes -> names,27447
+emerging,train,contents,exposure > 1 (days / 370-day rows) -> recomputed from dates,146
+emerging,train,contents,sum_insured ~1000x too large -> /1000,57
+emerging,test,motor,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+emerging,test,buildings,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+emerging,test,buildings,sum_insured ~1000x too large -> /1000,104
+emerging,test,buildings,construction_type BRK/STN/WOD/MIX codes -> names,52295
+emerging,test,contents,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+emerging,test,contents,sum_insured ~1000x too large -> /1000,135
+emerging,all,all,occupation text normalised (80 -> 40 levels),80
+emerging,train,all,repudiated claims (excluded from target),120
+emerging,train,all,claims re-linked to nearest policy row (<= 31d),2
+emerging,train,all,"claims outside any policy period dropped (loss years [2021, 2022, 2023])",34
+developed,train,motor,exposure > 1 (days / 370-day rows) -> recomputed from dates,3991
+developed,train,buildings,exposure > 1 (days / 370-day rows) -> recomputed from dates,3044
+developed,train,buildings,sum_insured ~1000x too large -> /1000,1395
+developed,train,buildings,construction_type BRK/STN/WOD/MIX codes -> names,0
+developed,train,contents,exposure > 1 (days / 370-day rows) -> recomputed from dates,3088
+developed,train,contents,sum_insured ~1000x too large -> /1000,1402
+developed,test,motor,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+developed,test,buildings,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+developed,test,buildings,sum_insured ~1000x too large -> /1000,370
+developed,test,buildings,construction_type BRK/STN/WOD/MIX codes -> names,0
+developed,test,contents,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+developed,test,contents,sum_insured ~1000x too large -> /1000,360
+developed,all,all,occupation text normalised (20 -> 20 levels),20
+developed,train,all,repudiated claims (excluded from target),1711
+developed,train,all,claims re-linked to nearest policy row (<= 31d),245
+developed,train,all,"claims outside any policy period dropped (loss years [2020, 2021, 2022, 2023])",165
+emerging,reference,motor,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+emerging,reference,buildings,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+emerging,reference,buildings,sum_insured ~1000x too large -> /1000,0
+emerging,reference,buildings,construction_type BRK/STN/WOD/MIX codes -> names,7
+emerging,reference,contents,exposure > 1 (days / 370-day rows) -> recomputed from dates,0
+emerging,reference,contents,sum_insured ~1000x too large -> /1000,0

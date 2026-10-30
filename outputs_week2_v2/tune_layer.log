@@ -1,0 +1,181 @@
+
+==========================================================================================
+>>> IAA week 2 v2 | mode=tune smoke=False | out=./outputs_week2_v2
+==========================================================================================
+[     0s] loading emerging market from ./data/emerging
+[     1s] loading developed market from ./data/developping
+[   100s] prepared: emerging train 109,296 / test 209,063 rows, developed 2,409,311 rows | trends {'motor': '+6.3%', 'buildings': '+6.3%', 'contents': '+1.9%'}
+[   134s]   prior motor     83 features, 325 rounds | top {'ncb_years': 0.158, 'log_premium_rel': 0.125, 'years_licensed': 0.091, 'pol_hist_freq': 0.072, 'age_band': 0.031}
+[   154s]   prior buildings 75 features, 129 rounds | top {'flood_zone': 0.216, 'elevation_m': 0.128, 'log_si_rel': 0.091, 'distance_to_river_km': 0.052, 'property_age': 0.045}
+[   175s]   prior contents  76 features, 172 rounds | top {'flood_zone': 0.249, 'log_si_rel': 0.133, 'elevation_m': 0.112, 'excess_to_si': 0.099, 'prior_claims_5y': 0.031}
+[   177s] tune start score=0.16025 raw=0.12579
+[   212s]   prior motor     83 features, 325 rounds | top {'ncb_years': 0.158, 'log_premium_rel': 0.125, 'years_licensed': 0.091, 'pol_hist_freq': 0.072, 'age_band': 0.031}
+[   313s]   pass 1 layer.motor.w_peril=0.5: score 0.16039 (best 0.16025)
+[   314s]   pass 1 layer.motor.w_peril=0.75: score 0.16025 (best 0.16025)
+[   315s]   pass 1 layer.motor.w_peril=1.0: score 0.15996 (best 0.16025)
+[   317s]   pass 1 layer.motor.peril_slope=False: score 0.15987 (best 0.16025)
+[   317s]   pass 1 layer.motor.slope_ridge=0.3: score 0.16025 (best 0.16025)
+[   318s]   pass 1 layer.motor.slope_ridge=1.0: score 0.16025 (best 0.16025)
+[   319s]   pass 1 layer.motor.slope_ridge=3.0: score 0.16025 (best 0.16025)
+[   319s]   pass 1 layer.motor.weather_terms=True: score 0.16000 (best 0.16025)
+[   320s]   pass 1 layer.motor.nb_mode=line: score 0.15862 (best 0.16025)
+[   321s]   pass 1 layer.motor.nb_mode=peril: score 0.15870 (best 0.16025)
+[   321s]   pass 1 layer.motor.nb_ridge=1.0: score 0.16025 (best 0.16025)
+[   322s]   pass 1 layer.motor.nb_ridge=5.0: score 0.16025 (best 0.16025)
+[   323s]   pass 1 layer.motor.extra_terms=['gender']: score 0.16148 (best 0.16025)  <- kept
+[   323s]   pass 1 layer.motor.extra_terms=['gender', 'selfemp']: score 0.16151 (best 0.16148)
+[   324s]   pass 1 layer.motor.extra_terms=['gender', 'selfemp', 'age']: score 0.16040 (best 0.16148)
+[   325s]   pass 1 layer.motor.extra_ridge=0.3: score 0.16148 (best 0.16148)
+[   325s]   pass 1 layer.motor.extra_ridge=5.0: score 0.16149 (best 0.16148)
+[   333s]   pass 1 layer.motor.w_resid=0.25: score 0.16144 (best 0.16148)
+[   340s]   pass 1 layer.motor.w_resid=0.5: score 0.16138 (best 0.16148)
+[   357s]   pass 1 layer.motor.w_a=0.15: score 0.16181 (best 0.16148)  <- kept
+[   374s]   pass 1 layer.motor.w_a=0.3: score 0.16180 (best 0.16181)
+[   389s]   pass 1 layer.motor.w_a=0.45: score 0.16148 (best 0.16181)
+[   414s]   prior motor     83 features, 325 rounds | top {'ncb_years': 0.158, 'log_premium_rel': 0.125, 'years_licensed': 0.091, 'pol_hist_freq': 0.072, 'age_band': 0.031}
+[   462s]   pass 1 layer.motor.freqsev=True: score 0.16225 (best 0.16181)  <- kept
+[   472s]   prior buildings 75 features, 129 rounds | top {'flood_zone': 0.216, 'elevation_m': 0.128, 'log_si_rel': 0.091, 'distance_to_river_km': 0.052, 'property_age': 0.045}
+[   508s]   pass 1 layer.buildings.w_peril=0.5: score 0.16295 (best 0.16225)  <- kept
+[   508s]   pass 1 layer.buildings.w_peril=0.75: score 0.16256 (best 0.16295)
+[   508s]   pass 1 layer.buildings.w_peril=1.0: score 0.16165 (best 0.16295)
+[   509s]   pass 1 layer.buildings.peril_slope=False: score 0.16391 (best 0.16295)  <- kept
+[   509s]   pass 1 layer.buildings.slope_ridge=0.3: score 0.16391 (best 0.16391)
+[   510s]   pass 1 layer.buildings.slope_ridge=1.0: score 0.16391 (best 0.16391)
+[   510s]   pass 1 layer.buildings.slope_ridge=3.0: score 0.16391 (best 0.16391)
+[   510s]   pass 1 layer.buildings.weather_terms=True: score 0.16071 (best 0.16391)
+[   511s]   pass 1 layer.buildings.nb_mode=line: score 0.16370 (best 0.16391)
+[   511s]   pass 1 layer.buildings.nb_mode=peril: score 0.16057 (best 0.16391)
+[   512s]   pass 1 layer.buildings.nb_ridge=1.0: score 0.16391 (best 0.16391)
+[   512s]   pass 1 layer.buildings.nb_ridge=5.0: score 0.16391 (best 0.16391)
+[   513s]   pass 1 layer.buildings.extra_terms=['gender']: score 0.16419 (best 0.16391)
+[   513s]   pass 1 layer.buildings.extra_terms=['gender', 'selfemp']: score 0.16332 (best 0.16391)
+[   514s]   pass 1 layer.buildings.extra_terms=['gender', 'selfemp', 'age']: score 0.15681 (best 0.16391)
+[   514s]   pass 1 layer.buildings.extra_ridge=0.3: score 0.16391 (best 0.16391)
+[   515s]   pass 1 layer.buildings.extra_ridge=5.0: score 0.16391 (best 0.16391)
+[   518s]   pass 1 layer.buildings.w_resid=0.25: score 0.16396 (best 0.16391)
+[   521s]   pass 1 layer.buildings.w_resid=0.5: score 0.16399 (best 0.16391)
+[   525s]   pass 1 layer.buildings.w_a=0.15: score 0.16402 (best 0.16391)
+[   529s]   pass 1 layer.buildings.w_a=0.3: score 0.16383 (best 0.16391)
+[   533s]   pass 1 layer.buildings.w_a=0.45: score 0.16336 (best 0.16391)
+[   544s]   prior buildings 75 features, 129 rounds | top {'flood_zone': 0.216, 'elevation_m': 0.128, 'log_si_rel': 0.091, 'distance_to_river_km': 0.052, 'property_age': 0.045}
+[   599s]   pass 1 layer.buildings.freqsev=True: score 0.16331 (best 0.16391)
+[   611s]   prior contents  76 features, 172 rounds | top {'flood_zone': 0.249, 'log_si_rel': 0.133, 'elevation_m': 0.112, 'excess_to_si': 0.099, 'prior_claims_5y': 0.031}
+[   644s]   pass 1 layer.contents.w_peril=0.5: score 0.16216 (best 0.16391)
+[   644s]   pass 1 layer.contents.w_peril=0.75: score 0.16104 (best 0.16391)
+[   644s]   pass 1 layer.contents.w_peril=1.0: score 0.15970 (best 0.16391)
+[   645s]   pass 1 layer.contents.peril_slope=False: score 0.16399 (best 0.16391)
+[   645s]   pass 1 layer.contents.slope_ridge=0.3: score 0.16391 (best 0.16391)
+[   646s]   pass 1 layer.contents.slope_ridge=1.0: score 0.16391 (best 0.16391)
+[   646s]   pass 1 layer.contents.slope_ridge=3.0: score 0.16391 (best 0.16391)
+[   646s]   pass 1 layer.contents.weather_terms=True: score 0.16391 (best 0.16391)
+[   646s]   pass 1 layer.contents.nb_mode=line: score 0.16340 (best 0.16391)
+[   647s]   pass 1 layer.contents.nb_mode=peril: score 0.16340 (best 0.16391)
+[   647s]   pass 1 layer.contents.nb_ridge=1.0: score 0.16391 (best 0.16391)
+[   647s]   pass 1 layer.contents.nb_ridge=5.0: score 0.16391 (best 0.16391)
+[   647s]   pass 1 layer.contents.extra_terms=['gender']: score 0.16406 (best 0.16391)
+[   648s]   pass 1 layer.contents.extra_terms=['gender', 'selfemp']: score 0.16398 (best 0.16391)
+[   648s]   pass 1 layer.contents.extra_terms=['gender', 'selfemp', 'age']: score 0.16338 (best 0.16391)
+[   648s]   pass 1 layer.contents.extra_ridge=0.3: score 0.16391 (best 0.16391)
+[   648s]   pass 1 layer.contents.extra_ridge=5.0: score 0.16391 (best 0.16391)
+[   651s]   pass 1 layer.contents.w_resid=0.25: score 0.16391 (best 0.16391)
+[   655s]   pass 1 layer.contents.w_resid=0.5: score 0.16392 (best 0.16391)
+[   660s]   pass 1 layer.contents.w_a=0.15: score 0.16352 (best 0.16391)
+[   665s]   pass 1 layer.contents.w_a=0.3: score 0.16291 (best 0.16391)
+[   671s]   pass 1 layer.contents.w_a=0.45: score 0.16210 (best 0.16391)
+[   681s]   prior contents  76 features, 172 rounds | top {'flood_zone': 0.249, 'log_si_rel': 0.133, 'elevation_m': 0.112, 'excess_to_si': 0.099, 'prior_claims_5y': 0.031}
+[   703s]   pass 1 layer.contents.freqsev=True: score 0.16412 (best 0.16391)
+[   703s]   pass 1 resid_params.num_leaves=3: score 0.16391 (best 0.16391)
+[   703s]   pass 1 resid_params.num_leaves=8: score 0.16391 (best 0.16391)
+[   703s]   pass 1 resid_params.min_data_in_leaf=200: score 0.16391 (best 0.16391)
+[   703s]   pass 1 resid_params.min_data_in_leaf=800: score 0.16391 (best 0.16391)
+[   704s]   pass 1 resid_params.learning_rate=0.02: score 0.16391 (best 0.16391)
+[   722s]   prior motor     83 features, 325 rounds | top {'ncb_years': 0.158, 'log_premium_rel': 0.125, 'years_licensed': 0.091, 'pol_hist_freq': 0.072, 'age_band': 0.031}
+[   828s]   pass 2 layer.motor.w_peril=0.5: score 0.16404 (best 0.16391)
+[   838s]   pass 2 layer.motor.w_peril=0.75: score 0.16390 (best 0.16391)
+[   848s]   pass 2 layer.motor.w_peril=1.0: score 0.16363 (best 0.16391)
+[   859s]   pass 2 layer.motor.peril_slope=False: score 0.16344 (best 0.16391)
+[   869s]   pass 2 layer.motor.slope_ridge=0.3: score 0.16390 (best 0.16391)
+[   878s]   pass 2 layer.motor.slope_ridge=1.0: score 0.16389 (best 0.16391)
+[   888s]   pass 2 layer.motor.slope_ridge=3.0: score 0.16386 (best 0.16391)
+[   898s]   pass 2 layer.motor.weather_terms=True: score 0.16392 (best 0.16391)
+[   908s]   pass 2 layer.motor.nb_mode=line: score 0.16271 (best 0.16391)
+[   918s]   pass 2 layer.motor.nb_mode=peril: score 0.16279 (best 0.16391)
+[   929s]   pass 2 layer.motor.nb_ridge=1.0: score 0.16391 (best 0.16391)
+[   939s]   pass 2 layer.motor.nb_ridge=5.0: score 0.16391 (best 0.16391)
+[   949s]   pass 2 layer.motor.extra_terms=[]: score 0.16272 (best 0.16391)
+[   959s]   pass 2 layer.motor.extra_terms=['gender', 'selfemp']: score 0.16394 (best 0.16391)
+[   969s]   pass 2 layer.motor.extra_terms=['gender', 'selfemp', 'age']: score 0.16307 (best 0.16391)
+[   979s]   pass 2 layer.motor.extra_ridge=0.3: score 0.16391 (best 0.16391)
+[   989s]   pass 2 layer.motor.extra_ridge=5.0: score 0.16390 (best 0.16391)
+[  1003s]   pass 2 layer.motor.w_resid=0.25: score 0.16388 (best 0.16391)
+[  1017s]   pass 2 layer.motor.w_resid=0.5: score 0.16385 (best 0.16391)
+[  1017s]   pass 2 layer.motor.w_a=0.0: score 0.16351 (best 0.16391)
+[  1027s]   pass 2 layer.motor.w_a=0.3: score 0.16394 (best 0.16391)
+[  1037s]   pass 2 layer.motor.w_a=0.45: score 0.16363 (best 0.16391)
+[  1037s]   pass 2 layer.motor.freqsev=False: score 0.16347 (best 0.16391)
+[  1038s]   pass 2 layer.buildings.w_peril=0.0: score 0.16353 (best 0.16391)
+[  1039s]   pass 2 layer.buildings.w_peril=0.75: score 0.16364 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.w_peril=1.0: score 0.16307 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.peril_slope=True: score 0.16295 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.slope_ridge=0.3: score 0.16391 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.slope_ridge=1.0: score 0.16391 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.slope_ridge=3.0: score 0.16391 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.weather_terms=True: score 0.16071 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.nb_mode=line: score 0.16370 (best 0.16391)
+[  1040s]   pass 2 layer.buildings.nb_mode=peril: score 0.16057 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.nb_ridge=1.0: score 0.16391 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.nb_ridge=5.0: score 0.16391 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.extra_terms=['gender']: score 0.16419 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.extra_terms=['gender', 'selfemp']: score 0.16332 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.extra_terms=['gender', 'selfemp', 'age']: score 0.15681 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.extra_ridge=0.3: score 0.16391 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.extra_ridge=5.0: score 0.16391 (best 0.16391)
+[  1041s]   pass 2 layer.buildings.w_resid=0.25: score 0.16396 (best 0.16391)
+[  1042s]   pass 2 layer.buildings.w_resid=0.5: score 0.16399 (best 0.16391)
+[  1042s]   pass 2 layer.buildings.w_a=0.15: score 0.16402 (best 0.16391)
+[  1042s]   pass 2 layer.buildings.w_a=0.3: score 0.16383 (best 0.16391)
+[  1042s]   pass 2 layer.buildings.w_a=0.45: score 0.16336 (best 0.16391)
+[  1042s]   pass 2 layer.buildings.freqsev=True: score 0.16331 (best 0.16391)
+[  1043s]   pass 2 layer.contents.w_peril=0.5: score 0.16216 (best 0.16391)
+[  1043s]   pass 2 layer.contents.w_peril=0.75: score 0.16104 (best 0.16391)
+[  1044s]   pass 2 layer.contents.w_peril=1.0: score 0.15970 (best 0.16391)
+[  1044s]   pass 2 layer.contents.peril_slope=False: score 0.16399 (best 0.16391)
+[  1044s]   pass 2 layer.contents.slope_ridge=0.3: score 0.16391 (best 0.16391)
+[  1044s]   pass 2 layer.contents.slope_ridge=1.0: score 0.16391 (best 0.16391)
+[  1044s]   pass 2 layer.contents.slope_ridge=3.0: score 0.16391 (best 0.16391)
+[  1045s]   pass 2 layer.contents.weather_terms=True: score 0.16391 (best 0.16391)
+[  1045s]   pass 2 layer.contents.nb_mode=line: score 0.16340 (best 0.16391)
+[  1045s]   pass 2 layer.contents.nb_mode=peril: score 0.16340 (best 0.16391)
+[  1045s]   pass 2 layer.contents.nb_ridge=1.0: score 0.16391 (best 0.16391)
+[  1045s]   pass 2 layer.contents.nb_ridge=5.0: score 0.16391 (best 0.16391)
+[  1045s]   pass 2 layer.contents.extra_terms=['gender']: score 0.16406 (best 0.16391)
+[  1045s]   pass 2 layer.contents.extra_terms=['gender', 'selfemp']: score 0.16398 (best 0.16391)
+[  1045s]   pass 2 layer.contents.extra_terms=['gender', 'selfemp', 'age']: score 0.16338 (best 0.16391)
+[  1046s]   pass 2 layer.contents.extra_ridge=0.3: score 0.16391 (best 0.16391)
+[  1046s]   pass 2 layer.contents.extra_ridge=5.0: score 0.16391 (best 0.16391)
+[  1046s]   pass 2 layer.contents.w_resid=0.25: score 0.16391 (best 0.16391)
+[  1046s]   pass 2 layer.contents.w_resid=0.5: score 0.16392 (best 0.16391)
+[  1046s]   pass 2 layer.contents.w_a=0.15: score 0.16352 (best 0.16391)
+[  1046s]   pass 2 layer.contents.w_a=0.3: score 0.16291 (best 0.16391)
+[  1046s]   pass 2 layer.contents.w_a=0.45: score 0.16210 (best 0.16391)
+[  1047s]   pass 2 layer.contents.freqsev=True: score 0.16412 (best 0.16391)
+[  1047s]   pass 2 resid_params.num_leaves=3: score 0.16391 (best 0.16391)
+[  1047s]   pass 2 resid_params.num_leaves=8: score 0.16391 (best 0.16391)
+[  1048s]   pass 2 resid_params.min_data_in_leaf=200: score 0.16391 (best 0.16391)
+[  1048s]   pass 2 resid_params.min_data_in_leaf=800: score 0.16391 (best 0.16391)
+[  1048s]   pass 2 resid_params.learning_rate=0.02: score 0.16391 (best 0.16391)
+[  1048s] tune done: best score 0.16391 -> ./outputs_week2_v2/best_config.json
+
+==========================================================================================
+>>> FINAL FIT 2023-2024 -> 2025
+==========================================================================================
+[  1049s]   motor     2025 cost/exp   543.6 vs 2023-24@2025   500.3 (x1.09) | 2024 only   501.3 | NB/renewal 1.32 | loading 6.38%
+[  1049s]   buildings 2025 cost/exp   470.2 vs 2023-24@2025   460.1 (x1.02) | 2024 only   345.1 | NB/renewal 1.02 | loading 4.99%
+[  1049s]   contents  2025 cost/exp    94.2 vs 2023-24@2025    92.9 (x1.01) | 2024 only    91.1 | NB/renewal 1.00 | loading 2.17%
+[  1050s] wrote ./outputs_week2_v2/submission_week2_v2.csv rows=209,063 mean=338.57 max=3807
+
+==========================================================================================
+>>> REFERENCE POLICIES - technical premium on the emerging expense basis
+==========================================================================================
+   [20 reference-policy rows omitted from the shared copy: their fields are competition data]
+[  1050s] done

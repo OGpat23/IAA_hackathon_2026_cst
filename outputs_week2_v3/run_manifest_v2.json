@@ -1,0 +1,559 @@
+{
+  "script": "week2_v2.py",
+  "mode": "final",
+  "smoke": false,
+  "run_seconds": 588.0,
+  "config": {
+    "prior": {
+      "motor": {
+        "params": {
+          "learning_rate": 0.05,
+          "num_leaves": 15,
+          "min_data_in_leaf": 2000,
+          "feature_fraction": 0.7,
+          "bagging_fraction": 0.7,
+          "lambda_l2": 50.0
+        },
+        "premium": true,
+        "avg_weather": false,
+        "anomalies": true,
+        "history": false
+      },
+      "buildings": {
+        "params": {
+          "learning_rate": 0.05,
+          "num_leaves": 15,
+          "min_data_in_leaf": 2000,
+          "feature_fraction": 0.7,
+          "bagging_fraction": 0.7,
+          "lambda_l2": 50.0
+        },
+        "premium": false,
+        "avg_weather": false,
+        "anomalies": true,
+        "history": true
+      },
+      "contents": {
+        "params": {
+          "learning_rate": 0.05,
+          "num_leaves": 7,
+          "min_data_in_leaf": 3000,
+          "feature_fraction": 0.7,
+          "bagging_fraction": 0.7,
+          "lambda_l2": 50.0
+        },
+        "premium": false,
+        "avg_weather": false,
+        "anomalies": true,
+        "history": false
+      }
+    },
+    "prior_seeds": [
+      1,
+      2,
+      3
+    ],
+    "layer": {
+      "motor": {
+        "w_peril": 0.5,
+        "peril_slope": true,
+        "slope_ridge": 0.0,
+        "weather_terms": false,
+        "nb_mode": "none",
+        "nb_ridge": 0.0,
+        "extra_terms": [
+          "gender"
+        ],
+        "extra_ridge": 1.0,
+        "w_resid": 0.0,
+        "w_a": 0.15,
+        "freqsev": false
+      },
+      "buildings": {
+        "w_peril": 0.5,
+        "peril_slope": false,
+        "slope_ridge": 0.0,
+        "weather_terms": false,
+        "nb_mode": "none",
+        "nb_ridge": 0.0,
+        "extra_terms": [],
+        "extra_ridge": 1.0,
+        "w_resid": 0.0,
+        "w_a": 0.0,
+        "freqsev": false
+      },
+      "contents": {
+        "w_peril": 0.0,
+        "peril_slope": true,
+        "slope_ridge": 0.0,
+        "weather_terms": false,
+        "nb_mode": "none",
+        "nb_ridge": 0.0,
+        "extra_terms": [],
+        "extra_ridge": 1.0,
+        "w_resid": 0.0,
+        "w_a": 0.0,
+        "freqsev": true
+      }
+    },
+    "resid_params": {
+      "learning_rate": 0.01,
+      "num_leaves": 4,
+      "max_depth": 3,
+      "min_data_in_leaf": 400,
+      "feature_fraction": 0.6,
+      "lambda_l2": 50.0
+    },
+    "a_params": {
+      "learning_rate": 0.02,
+      "num_leaves": 6,
+      "max_depth": 4,
+      "min_data_in_leaf": 400,
+      "feature_fraction": 0.6,
+      "lambda_l2": 50.0
+    },
+    "level": {
+      "motor": 1.0,
+      "buildings": 1.0,
+      "contents": 1.0
+    },
+    "nb_cred": {
+      "enabled": true,
+      "k": 300,
+      "bounds": [
+        0.8,
+        1.25
+      ]
+    }
+  },
+  "data_md5": {
+    "addresses (1).parquet": "aad04b143389215e099a3414d7926162",
+    "claims.parquet": "5ebd52402ed7c81c16de9ee54babd707",
+    "customers.parquet": "cc5e71468d171919920d88501c826c20",
+    "expenses.parquet": "69b733e228548e890136c71a549045bf",
+    "policies_buildings.parquet": "b485efa7f62c5eaa8b259e2ce4b300f5",
+    "policies_contents.parquet": "cd86fbf03087a5921d95084423701be5",
+    "policies_motor.parquet": "d1ee538b69fac149ba0a167ea42b02b6",
+    "reference_policies.parquet": "df3b1125d0a3b31281c9fae28a56c89e",
+    "sample_submission.parquet": "fde7fa93b9907e72f581a2ae7e513aba",
+    "test_buildings.parquet": "cd5dd9164d3c6690c20a3ee1b77b4c70",
+    "test_contents.parquet": "00503445baaa28ac422f79024e5bef51",
+    "test_motor.parquet": "fbed8ecced3bc7eba78dadb09099f804",
+    "weather.parquet": "d86d473ef1f478ebf146a2c1e6074a1a"
+  },
+  "validation": {
+    "bwd_raw": 0.10310598547713379,
+    "bwd_c": 0.1665441395667756,
+    "bwd_mot_c": 0.0702668634681306,
+    "bwd_mot_PA": 0.6984601377125945,
+    "bwd_bui_c": 0.12022604332912934,
+    "bwd_bui_PA": 0.5855444050592551,
+    "bwd_con_c": 0.17023397197118617,
+    "bwd_con_PA": 0.9772719608861203,
+    "cv_raw": 0.14557652184667946,
+    "cv_c": 0.16956188464567934,
+    "cv_mot_c": 0.0969198694290897,
+    "cv_mot_PA": 0.8560290636866706,
+    "cv_bui_c": 0.12293923733357393,
+    "cv_bui_PA": 1.10239066896717,
+    "cv_con_c": 0.15927209252746577,
+    "cv_con_PA": 0.8625362046303305,
+    "fwd_raw": 0.15336474841895809,
+    "fwd_c": 0.1666340818262989,
+    "fwd_mot_c": 0.11648863218857064,
+    "fwd_mot_PA": 1.057804437334776,
+    "fwd_bui_c": 0.1104379935248968,
+    "fwd_bui_PA": 2.006732050853316,
+    "fwd_con_c": 0.13800550377602483,
+    "fwd_con_PA": 0.789593870933312,
+    "score": 0.1675800353462513,
+    "score_raw": 0.1340157519142571
+  },
+  "levels": {
+    "motor": {
+      "pred": 650.9159914554305,
+      "hist": 574.1068163012566,
+      "pp24": 579.3711012571998,
+      "ratio": 1.1337889970528918,
+      "nb_rel": 1.3863974482426369,
+      "loading": 0.07919092026318356
+    },
+    "buildings": {
+      "pred": 470.3626129614016,
+      "hist": 462.89653057391104,
+      "pp24": 346.29629304822294,
+      "ratio": 1.0161290523785822,
+      "nb_rel": 1.0425135891479929,
+      "loading": 0.04987918051225732
+    },
+    "contents": {
+      "pred": 101.57115626705144,
+      "hist": 92.85783101506382,
+      "pp24": 91.08776964242253,
+      "ratio": 1.0938351150004149,
+      "nb_rel": 1.147294169441113,
+      "loading": 0.021653797888487425
+    }
+  },
+  "glm_coefficients": {
+    "motor": {
+      "bodily_injury": {
+        "const": 5.2071,
+        "prior": 0.9843,
+        "gender": -0.4103
+      },
+      "glass_hail": {
+        "const": 1.0927,
+        "prior": 1.5156,
+        "gender": -0.0336
+      },
+      "own_damage": {
+        "const": 2.7995,
+        "prior": 1.106,
+        "gender": -0.2937
+      },
+      "theft": {
+        "const": 3.0759,
+        "prior": 1.3483,
+        "gender": 0.1404
+      },
+      "third_party_prop": {
+        "const": 4.9017,
+        "prior": 0.9155,
+        "gender": -0.2544
+      },
+      "TOTAL": {
+        "const": 6.1523,
+        "prior": 0.9097,
+        "gender": -0.2822
+      }
+    },
+    "buildings": {
+      "accidental_damage": {
+        "const": 1.141
+      },
+      "escape_of_water": {
+        "const": 3.7901
+      },
+      "fire": {
+        "const": 5.1532
+      },
+      "flood": {
+        "const": 2.4523
+      },
+      "storm": {
+        "const": 3.8251
+      },
+      "subsidence": {
+        "const": 3.5265
+      },
+      "TOTAL": {
+        "const": 5.872
+      }
+    },
+    "contents": {
+      "TOTAL": {
+        "const": 4.2946,
+        "prior": 0.9182,
+        "prior2": 1.1662
+      }
+    }
+  },
+  "nb_factors": {
+    "motor": {
+      "True": 1.0513563225207954,
+      "False": 0.992871858419306
+    },
+    "buildings": {
+      "True": 1.015421218875455,
+      "False": 0.995074748202326
+    },
+    "contents": {
+      "True": 1.0748905599992127,
+      "False": 0.9809490675412093
+    }
+  },
+  "trends_pa": {
+    "motor": 0.0703,
+    "buildings": 0.0666,
+    "contents": 0.0186
+  },
+  "level_scale": 1.0,
+  "severity_development": [
+    {
+      "line": "buildings",
+      "peril": "accidental_damage",
+      "loss_year": 2023,
+      "claims": 967,
+      "ratio": 1.089,
+      "se_log": 0.04,
+      "factor": 1.089371056124154
+    },
+    {
+      "line": "buildings",
+      "peril": "accidental_damage",
+      "loss_year": 2024,
+      "claims": 989,
+      "ratio": 1.025,
+      "se_log": 0.04,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "escape_of_water",
+      "loss_year": 2023,
+      "claims": 2510,
+      "ratio": 0.927,
+      "se_log": 0.026,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "escape_of_water",
+      "loss_year": 2024,
+      "claims": 2558,
+      "ratio": 0.883,
+      "se_log": 0.026,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "fire",
+      "loss_year": 2023,
+      "claims": 279,
+      "ratio": 1.091,
+      "se_log": 0.073,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "fire",
+      "loss_year": 2024,
+      "claims": 309,
+      "ratio": 1.115,
+      "se_log": 0.069,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "flood",
+      "loss_year": 2023,
+      "claims": 550,
+      "ratio": 0.952,
+      "se_log": 0.051,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "flood",
+      "loss_year": 2024,
+      "claims": 530,
+      "ratio": 0.946,
+      "se_log": 0.053,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "storm",
+      "loss_year": 2023,
+      "claims": 2131,
+      "ratio": 0.916,
+      "se_log": 0.029,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "storm",
+      "loss_year": 2024,
+      "claims": 1894,
+      "ratio": 0.887,
+      "se_log": 0.029,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "subsidence",
+      "loss_year": 2023,
+      "claims": 380,
+      "ratio": 1.024,
+      "se_log": 0.066,
+      "factor": 1.0
+    },
+    {
+      "line": "buildings",
+      "peril": "subsidence",
+      "loss_year": 2024,
+      "claims": 291,
+      "ratio": 0.913,
+      "se_log": 0.073,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "accidental_damage",
+      "loss_year": 2023,
+      "claims": 2368,
+      "ratio": 0.981,
+      "se_log": 0.028,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "accidental_damage",
+      "loss_year": 2024,
+      "claims": 2289,
+      "ratio": 0.942,
+      "se_log": 0.028,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "escape_of_water",
+      "loss_year": 2023,
+      "claims": 1372,
+      "ratio": 0.98,
+      "se_log": 0.036,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "escape_of_water",
+      "loss_year": 2024,
+      "claims": 1362,
+      "ratio": 0.971,
+      "se_log": 0.038,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "flood",
+      "loss_year": 2023,
+      "claims": 448,
+      "ratio": 0.924,
+      "se_log": 0.053,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "flood",
+      "loss_year": 2024,
+      "claims": 361,
+      "ratio": 0.906,
+      "se_log": 0.057,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "theft",
+      "loss_year": 2023,
+      "claims": 1970,
+      "ratio": 0.97,
+      "se_log": 0.031,
+      "factor": 1.0
+    },
+    {
+      "line": "contents",
+      "peril": "theft",
+      "loss_year": 2024,
+      "claims": 1976,
+      "ratio": 0.901,
+      "se_log": 0.031,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "bodily_injury",
+      "loss_year": 2023,
+      "claims": 2049,
+      "ratio": 1.35,
+      "se_log": 0.025,
+      "factor": 1.3497361755165698
+    },
+    {
+      "line": "motor",
+      "peril": "bodily_injury",
+      "loss_year": 2024,
+      "claims": 1178,
+      "ratio": 1.396,
+      "se_log": 0.031,
+      "factor": 1.3963663999167204
+    },
+    {
+      "line": "motor",
+      "peril": "glass_hail",
+      "loss_year": 2023,
+      "claims": 4112,
+      "ratio": 0.944,
+      "se_log": 0.02,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "glass_hail",
+      "loss_year": 2024,
+      "claims": 4020,
+      "ratio": 0.956,
+      "se_log": 0.02,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "own_damage",
+      "loss_year": 2023,
+      "claims": 11870,
+      "ratio": 1.017,
+      "se_log": 0.015,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "own_damage",
+      "loss_year": 2024,
+      "claims": 11537,
+      "ratio": 0.986,
+      "se_log": 0.014,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "theft",
+      "loss_year": 2023,
+      "claims": 1601,
+      "ratio": 0.975,
+      "se_log": 0.033,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "theft",
+      "loss_year": 2024,
+      "claims": 1503,
+      "ratio": 1.043,
+      "se_log": 0.033,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "third_party_prop",
+      "loss_year": 2023,
+      "claims": 8358,
+      "ratio": 0.964,
+      "se_log": 0.013,
+      "factor": 1.0
+    },
+    {
+      "line": "motor",
+      "peril": "third_party_prop",
+      "loss_year": 2024,
+      "claims": 7626,
+      "ratio": 0.94,
+      "se_log": 0.014,
+      "factor": 1.0
+    }
+  ],
+  "submission": {
+    "rows": 209063,
+    "mean": 381.2499894003243,
+    "path": "submission_week2_v2.csv"
+  }
+}

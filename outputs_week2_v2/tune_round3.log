@@ -1,0 +1,146 @@
+
+==========================================================================================
+>>> IAA week 2 v2 | mode=tune smoke=False | out=./outputs_week2_v2
+==========================================================================================
+[     0s] loading emerging market from ./data/emerging
+[     1s] loading developed market from ./data/developping
+[    47s] prepared: emerging train 109,296 / test 209,063 rows, developed 2,409,311 rows | trends {'motor': '+6.3%', 'buildings': '+6.3%', 'contents': '+1.9%'}
+[    47s] tuning continues from ./outputs_week2_v2/best_config.json
+[    58s] tune start score=0.16396 raw=0.13254
+[    69s]   pass 1 layer.motor.w_peril=0.0: score 0.16344 (best 0.16396)
+[    80s]   pass 1 layer.motor.w_peril=0.75: score 0.16404 (best 0.16396)
+[    90s]   pass 1 layer.motor.w_peril=1.0: score 0.16399 (best 0.16396)
+[   101s]   pass 1 layer.motor.peril_slope=False: score 0.16373 (best 0.16396)
+[   111s]   pass 1 layer.motor.slope_ridge=0.3: score 0.16396 (best 0.16396)
+[   123s]   pass 1 layer.motor.slope_ridge=1.0: score 0.16397 (best 0.16396)
+[   134s]   pass 1 layer.motor.slope_ridge=3.0: score 0.16397 (best 0.16396)
+[   146s]   pass 1 layer.motor.weather_terms=True: score 0.16401 (best 0.16396)
+[   157s]   pass 1 layer.motor.nb_mode=line: score 0.16267 (best 0.16396)
+[   170s]   pass 1 layer.motor.nb_mode=peril: score 0.16245 (best 0.16396)
+[   181s]   pass 1 layer.motor.nb_ridge=1.0: score 0.16396 (best 0.16396)
+[   192s]   pass 1 layer.motor.nb_ridge=5.0: score 0.16396 (best 0.16396)
+[   203s]   pass 1 layer.motor.extra_terms=[]: score 0.16269 (best 0.16396)
+[   214s]   pass 1 layer.motor.extra_terms=['gender', 'selfemp']: score 0.16396 (best 0.16396)
+[   226s]   pass 1 layer.motor.extra_terms=['gender', 'region']: score 0.16360 (best 0.16396)
+[   238s]   pass 1 layer.motor.extra_terms=['region']: score 0.16227 (best 0.16396)
+[   249s]   pass 1 layer.motor.extra_terms=['gender', 'selfemp', 'region']: score 0.16360 (best 0.16396)
+[   261s]   pass 1 layer.motor.extra_terms=['gender', 'selfemp', 'age']: score 0.16341 (best 0.16396)
+[   272s]   pass 1 layer.motor.extra_terms=['hist']: score 0.16278 (best 0.16396)
+[   283s]   pass 1 layer.motor.extra_terms=['gender', 'hist']: score 0.16402 (best 0.16396)
+[   294s]   pass 1 layer.motor.extra_terms=['gender', 'selfemp', 'hist']: score 0.16401 (best 0.16396)
+[   306s]   pass 1 layer.motor.extra_ridge=0.3: score 0.16397 (best 0.16396)
+[   318s]   pass 1 layer.motor.extra_ridge=5.0: score 0.16395 (best 0.16396)
+[   335s]   pass 1 layer.motor.w_resid=0.25: score 0.16389 (best 0.16396)
+[   351s]   pass 1 layer.motor.w_resid=0.5: score 0.16380 (best 0.16396)
+[   352s]   pass 1 layer.motor.w_a=0.0: score 0.16377 (best 0.16396)
+[   364s]   pass 1 layer.motor.w_a=0.3: score 0.16385 (best 0.16396)
+[   375s]   pass 1 layer.motor.w_a=0.45: score 0.16344 (best 0.16396)
+[   387s]   pass 1 layer.motor.freqsev=True: score 0.16415 (best 0.16396)
+[   388s]   pass 1 layer.buildings.w_peril=0.0: score 0.16373 (best 0.16396)
+[   389s]   pass 1 layer.buildings.w_peril=0.75: score 0.16358 (best 0.16396)
+[   389s]   pass 1 layer.buildings.w_peril=1.0: score 0.16289 (best 0.16396)
+[   389s]   pass 1 layer.buildings.peril_slope=True: score 0.16295 (best 0.16396)
+[   390s]   pass 1 layer.buildings.slope_ridge=0.3: score 0.16396 (best 0.16396)
+[   390s]   pass 1 layer.buildings.slope_ridge=1.0: score 0.16396 (best 0.16396)
+[   391s]   pass 1 layer.buildings.slope_ridge=3.0: score 0.16396 (best 0.16396)
+[   391s]   pass 1 layer.buildings.weather_terms=True: score 0.16066 (best 0.16396)
+[   391s]   pass 1 layer.buildings.nb_mode=line: score 0.16375 (best 0.16396)
+[   392s]   pass 1 layer.buildings.nb_mode=peril: score 0.16057 (best 0.16396)
+[   392s]   pass 1 layer.buildings.nb_ridge=1.0: score 0.16396 (best 0.16396)
+[   393s]   pass 1 layer.buildings.nb_ridge=5.0: score 0.16396 (best 0.16396)
+[   393s]   pass 1 layer.buildings.extra_terms=['gender']: score 0.16422 (best 0.16396)
+[   394s]   pass 1 layer.buildings.extra_terms=['gender', 'selfemp']: score 0.16335 (best 0.16396)
+[   395s]   pass 1 layer.buildings.extra_terms=['gender', 'region']: score 0.16096 (best 0.16396)
+[   396s]   pass 1 layer.buildings.extra_terms=['region']: score 0.16063 (best 0.16396)
+[   397s]   pass 1 layer.buildings.extra_terms=['gender', 'selfemp', 'region']: score 0.16095 (best 0.16396)
+[   397s]   pass 1 layer.buildings.extra_terms=['gender', 'selfemp', 'age']: score 0.15676 (best 0.16396)
+[   398s]   pass 1 layer.buildings.extra_terms=['hist']: score 0.16394 (best 0.16396)
+[   398s]   pass 1 layer.buildings.extra_terms=['gender', 'hist']: score 0.16419 (best 0.16396)
+[   399s]   pass 1 layer.buildings.extra_terms=['gender', 'selfemp', 'hist']: score 0.16345 (best 0.16396)
+[   399s]   pass 1 layer.buildings.extra_ridge=0.3: score 0.16396 (best 0.16396)
+[   400s]   pass 1 layer.buildings.extra_ridge=5.0: score 0.16396 (best 0.16396)
+[   403s]   pass 1 layer.buildings.w_resid=0.25: score 0.16396 (best 0.16396)
+[   406s]   pass 1 layer.buildings.w_resid=0.5: score 0.16394 (best 0.16396)
+[   410s]   pass 1 layer.buildings.w_a=0.15: score 0.16414 (best 0.16396)
+[   415s]   pass 1 layer.buildings.w_a=0.3: score 0.16399 (best 0.16396)
+[   419s]   pass 1 layer.buildings.w_a=0.45: score 0.16357 (best 0.16396)
+[   420s]   pass 1 layer.buildings.freqsev=True: score 0.16307 (best 0.16396)
+[   421s]   pass 1 layer.contents.w_peril=0.5: score 0.16243 (best 0.16396)
+[   422s]   pass 1 layer.contents.w_peril=0.75: score 0.16118 (best 0.16396)
+[   422s]   pass 1 layer.contents.w_peril=1.0: score 0.15944 (best 0.16396)
+[   423s]   pass 1 layer.contents.peril_slope=False: score 0.16407 (best 0.16396)
+[   423s]   pass 1 layer.contents.slope_ridge=0.3: score 0.16397 (best 0.16396)
+[   423s]   pass 1 layer.contents.slope_ridge=1.0: score 0.16397 (best 0.16396)
+[   424s]   pass 1 layer.contents.slope_ridge=3.0: score 0.16398 (best 0.16396)
+[   424s]   pass 1 layer.contents.weather_terms=True: score 0.16396 (best 0.16396)
+[   424s]   pass 1 layer.contents.nb_mode=line: score 0.16349 (best 0.16396)
+[   424s]   pass 1 layer.contents.nb_mode=peril: score 0.16348 (best 0.16396)
+[   425s]   pass 1 layer.contents.nb_ridge=1.0: score 0.16396 (best 0.16396)
+[   425s]   pass 1 layer.contents.nb_ridge=5.0: score 0.16396 (best 0.16396)
+[   425s]   pass 1 layer.contents.extra_terms=['gender']: score 0.16405 (best 0.16396)
+[   425s]   pass 1 layer.contents.extra_terms=['gender', 'selfemp']: score 0.16405 (best 0.16396)
+[   426s]   pass 1 layer.contents.extra_terms=['gender', 'region']: score 0.16265 (best 0.16396)
+[   426s]   pass 1 layer.contents.extra_terms=['region']: score 0.16250 (best 0.16396)
+[   426s]   pass 1 layer.contents.extra_terms=['gender', 'selfemp', 'region']: score 0.16265 (best 0.16396)
+[   427s]   pass 1 layer.contents.extra_terms=['gender', 'selfemp', 'age']: score 0.16354 (best 0.16396)
+[   427s]   pass 1 layer.contents.extra_terms=['hist']: score 0.16394 (best 0.16396)
+[   427s]   pass 1 layer.contents.extra_terms=['gender', 'hist']: score 0.16402 (best 0.16396)
+[   428s]   pass 1 layer.contents.extra_terms=['gender', 'selfemp', 'hist']: score 0.16402 (best 0.16396)
+[   428s]   pass 1 layer.contents.extra_ridge=0.3: score 0.16396 (best 0.16396)
+[   428s]   pass 1 layer.contents.extra_ridge=5.0: score 0.16396 (best 0.16396)
+[   431s]   pass 1 layer.contents.w_resid=0.25: score 0.16400 (best 0.16396)
+[   435s]   pass 1 layer.contents.w_resid=0.5: score 0.16403 (best 0.16396)
+[   441s]   pass 1 layer.contents.w_a=0.15: score 0.16363 (best 0.16396)
+[   447s]   pass 1 layer.contents.w_a=0.3: score 0.16300 (best 0.16396)
+[   453s]   pass 1 layer.contents.w_a=0.45: score 0.16214 (best 0.16396)
+[   454s]   pass 1 layer.contents.freqsev=False: score 0.16341 (best 0.16396)
+[   454s]   pass 1 resid_params.num_leaves=3: score 0.16396 (best 0.16396)
+[   455s]   pass 1 resid_params.num_leaves=8: score 0.16396 (best 0.16396)
+[   455s]   pass 1 resid_params.min_data_in_leaf=200: score 0.16396 (best 0.16396)
+[   455s]   pass 1 resid_params.min_data_in_leaf=800: score 0.16396 (best 0.16396)
+[   455s]   pass 1 resid_params.learning_rate=0.02: score 0.16396 (best 0.16396)
+[   455s] tune done: best score 0.16396 -> ./outputs_week2_v2/best_config.json
+
+==========================================================================================
+>>> VALIDATION of the tuned configuration (all prior seeds)
+==========================================================================================
+bwd_raw       0.1080
+bwd_c         0.1657
+bwd_mot_c     0.0767
+bwd_mot_PA    0.7212
+bwd_bui_c     0.1202
+bwd_bui_PA    0.5867
+bwd_con_c     0.1698
+bwd_con_PA    0.9754
+cv_raw        0.1445
+cv_c          0.1660
+cv_mot_c      0.0986
+cv_mot_PA     0.8672
+cv_bui_c      0.1241
+cv_bui_PA     1.1091
+cv_con_c      0.1597
+cv_con_PA     0.8624
+fwd_raw       0.1454
+fwd_c         0.1604
+fwd_mot_c     0.1136
+fwd_mot_PA    1.0536
+fwd_bui_c     0.1126
+fwd_bui_PA    2.0235
+fwd_con_c     0.1393
+fwd_con_PA    0.7891
+score         0.1640
+score_raw     0.1326
+
+==========================================================================================
+>>> FINAL FIT 2023-2024 -> 2025
+==========================================================================================
+[   469s]   motor     2025 cost/exp   550.0 vs 2023-24@2025   500.3 (x1.10) | 2024 only   501.3 | NB/renewal 1.32 | loading 6.38%
+[   469s]   buildings 2025 cost/exp   470.2 vs 2023-24@2025   460.1 (x1.02) | 2024 only   345.1 | NB/renewal 1.02 | loading 4.99%
+[   469s]   contents  2025 cost/exp    96.7 vs 2023-24@2025    92.9 (x1.04) | 2024 only    91.1 | NB/renewal 1.05 | loading 2.17%
+[   469s] wrote ./outputs_week2_v2/submission_week2_v2.csv rows=209,063 mean=341.70 max=3807
+
+==========================================================================================
+>>> REFERENCE POLICIES - technical premium on the emerging expense basis
+==========================================================================================
+   [20 reference-policy rows omitted from the shared copy: their fields are competition data]
+[   469s] done

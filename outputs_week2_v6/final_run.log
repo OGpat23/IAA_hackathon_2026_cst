@@ -1,0 +1,63 @@
+
+==========================================================================================
+>>> IAA week 2 v2 | mode=final smoke=False | out=outputs_week2_v6
+==========================================================================================
+[     0s] loading emerging market from ./data/emerging
+[     1s] loading developed market from ./data/developping
+[     9s] severity development (IBNER) applied to 3 line x peril x year cells: {'buildings/accidental_damage/2023': 1.089371056124154, 'motor/bodily_injury/2023': 1.3497361755165698, 'motor/bodily_injury/2024': 1.3963663999167204}
+[    97s] prepared: emerging train 109,296 / test 209,063 rows, developed 2,409,311 rows | trends {'motor': '+7.0%', 'buildings': '+6.7%', 'contents': '+1.9%'}
+
+==========================================================================================
+>>> VALIDATION (Tweedie D2 on the 2025 business mix)
+==========================================================================================
+bwd_raw       0.1090
+bwd_c         0.1694
+bwd_mot_c     0.0710
+bwd_mot_PA    0.6939
+bwd_bui_c     0.1287
+bwd_bui_PA    0.5954
+bwd_con_c     0.1706
+bwd_con_PA    0.9795
+cv_raw        0.1451
+cv_c          0.1703
+cv_mot_c      0.0972
+cv_mot_PA     0.8550
+cv_bui_c      0.1251
+cv_bui_PA     1.1047
+cv_con_c      0.1592
+cv_con_PA     0.8608
+fwd_raw       0.1541
+fwd_c         0.1674
+fwd_mot_c     0.1176
+fwd_mot_PA    1.0529
+fwd_bui_c     0.1110
+fwd_bui_PA    1.9868
+fwd_con_c     0.1382
+fwd_con_PA    0.7847
+score         0.1690
+score_raw     0.1361
+
+==========================================================================================
+>>> FINAL FIT 2023-2024 -> 2025
+==========================================================================================
+
+==========================================================================================
+>>> NEW-BUSINESS CALIBRATION (credibility-weighted, out-of-fold, 97.5%-capped claims)
+==========================================================================================
+     line      segment  claims   A/E                A/E by year    Z  factor
+    motor new business     724 1.073 {2023: 1.294, 2024: 0.921} 0.71   1.051
+    motor      renewal    6620 0.993  {2023: 0.976, 2024: 1.01} 0.96   0.993
+buildings new business      79 1.081  {2023: 1.284, 2024: 0.95} 0.21   1.017
+buildings      renewal    1007 0.993  {2023: 0.98, 2024: 1.005} 0.77   0.995
+ contents new business     104 1.292  {2023: 1.084, 2024: 1.45} 0.26   1.075
+ contents      renewal     910 0.975 {2023: 0.994, 2024: 0.954} 0.75   0.981
+[   320s]   motor     2025 cost/exp   681.4 vs 2023-24@2025   574.1 (x1.19) | 2024 only   579.4 | NB/renewal 1.37 | loading 7.92%
+[   328s]   buildings 2025 cost/exp   487.2 vs 2023-24@2025   462.9 (x1.05) | 2024 only   346.3 | NB/renewal 1.05 | loading 4.99%
+[   328s]   contents  2025 cost/exp   102.7 vs 2023-24@2025    92.9 (x1.11) | 2024 only    91.1 | NB/renewal 1.15 | loading 2.17%
+[   329s] wrote outputs_week2_v6/submission_week2_v2.csv rows=209,063 mean=396.90 max=3218
+
+==========================================================================================
+>>> REFERENCE POLICIES - technical premium on the emerging expense basis
+==========================================================================================
+   [20 reference-policy rows omitted from the shared copy: their fields are competition data]
+[   329s] done

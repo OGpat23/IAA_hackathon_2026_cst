@@ -1,0 +1,15 @@
+[     0s] loading emerging market from ./data/emerging
+[     1s] loading developed market from ./data/developping
+[    10s] severity development (IBNER) applied to 3 line x peril x year cells: {'buildings/accidental_damage/2023': 1.089371056124154, 'motor/bodily_injury/2023': 1.3497361755165698, 'motor/bodily_injury/2024': 1.3963663999167204}
+[    99s] prepared: emerging train 109,296 / test 209,063 rows, developed 2,409,311 rows | trends {'motor': '+7.0%', 'buildings': '+6.7%', 'contents': '+1.9%'}
+[   117s]   prior motor     69 features, 161 rounds | top {'ncb_years': 0.278, 'log_premium_rel': 0.122, 'years_licensed': 0.109, 'cover_type': 0.037, 'prior_claims_5y': 0.036}
+[   188s]   prior buildings 75 features, 111 rounds | top {'flood_zone': 0.228, 'elevation_m': 0.121, 'log_si_rel': 0.078, 'distance_to_river_km': 0.064, 'excess_to_si': 0.052}
+[   249s]   prior contents  62 features, 190 rounds | top {'flood_zone': 0.255, 'log_si_rel': 0.132, 'excess_to_si': 0.114, 'elevation_m': 0.114, 'prior_claims_5y': 0.033}
+[   287s] xs_peril=0.0: {'score': 0.1675800353462513, 'score_raw': 0.1340157519142571, 'fwd_raw': 0.15336474841895809, 'bwd_raw': 0.10310598547713379, 'cv_raw': 0.14557652184667946}
+[   300s]   prior contents  62 features, 190 rounds | top {'flood_zone': 0.255, 'log_si_rel': 0.132, 'excess_to_si': 0.114, 'elevation_m': 0.114, 'prior_claims_5y': 0.033}
+[   371s] xs_peril=0.5: {'score': 0.1675800353462513, 'score_raw': 0.13432747169491663, 'fwd_raw': 0.1529293578680463, 'bwd_raw': 0.10437160511941357, 'cv_raw': 0.14568145209729}
+[   382s] xs_peril=1.0: {'score': 0.1675800353462513, 'score_raw': 0.13457330768333073, 'fwd_raw': 0.1525535386535508, 'bwd_raw': 0.10540907550261125, 'cv_raw': 0.1457573088938301}
+                score  score_raw  fwd_raw  bwd_raw   cv_raw
+xs_peril=0.0  0.16758    0.13402  0.15336  0.10311  0.14558
+xs_peril=0.5  0.16758    0.13433  0.15293  0.10437  0.14568
+xs_peril=1.0  0.16758    0.13457  0.15255  0.10541  0.14576

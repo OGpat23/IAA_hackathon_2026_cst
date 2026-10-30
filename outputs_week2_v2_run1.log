@@ -1,0 +1,54 @@
+
+==========================================================================================
+>>> IAA week 2 v2 | mode=final smoke=False | out=./outputs_week2_v2
+==========================================================================================
+[     0s] loading emerging market from ./data/emerging
+[     1s] loading developed market from ./data/developping
+[   121s] prepared: emerging train 109,296 / test 209,063 rows, developed 2,409,311 rows | trends {'motor': '+6.3%', 'buildings': '+6.3%', 'contents': '+1.9%'}
+[   161s]   prior motor     83 features, 325 rounds | top {'ncb_years': 0.158, 'log_premium_rel': 0.125, 'years_licensed': 0.091, 'pol_hist_freq': 0.072, 'age_band': 0.031}
+[   184s]   prior buildings 75 features, 129 rounds | top {'flood_zone': 0.216, 'elevation_m': 0.128, 'log_si_rel': 0.091, 'distance_to_river_km': 0.052, 'property_age': 0.045}
+[   205s]   prior contents  76 features, 172 rounds | top {'flood_zone': 0.249, 'log_si_rel': 0.133, 'elevation_m': 0.112, 'excess_to_si': 0.099, 'prior_claims_5y': 0.031}
+
+==========================================================================================
+>>> VALIDATION (Tweedie D2 on the 2025 business mix)
+==========================================================================================
+bwd_raw       0.0951
+bwd_c         0.1592
+bwd_mot_c     0.0674
+bwd_mot_PA    0.7372
+bwd_bui_c     0.1113
+bwd_bui_PA    0.6417
+bwd_con_c     0.1731
+bwd_con_PA    0.9590
+cv_raw        0.1365
+cv_c          0.1616
+cv_mot_c      0.0944
+cv_mot_PA     0.8593
+cv_bui_c      0.1170
+cv_bui_PA     1.1474
+cv_con_c      0.1578
+cv_con_PA     0.8494
+fwd_raw       0.1458
+fwd_c         0.1600
+fwd_mot_c     0.1143
+fwd_mot_PA    0.9920
+fwd_bui_c     0.1118
+fwd_bui_PA    2.0270
+fwd_con_c     0.1368
+fwd_con_PA    0.7711
+score         0.1603
+score_raw     0.1258
+
+==========================================================================================
+>>> FINAL FIT 2023-2024 -> 2025
+==========================================================================================
+[   208s]   motor     2025 cost/exp   537.3 vs 2023-24@2025   500.3 (x1.07) | 2024 only   501.3 | NB/renewal 1.36 | loading 6.38%
+[   208s]   buildings 2025 cost/exp   494.7 vs 2023-24@2025   460.1 (x1.08) | 2024 only   345.1 | NB/renewal 1.03 | loading 4.99%
+[   208s]   contents  2025 cost/exp    94.2 vs 2023-24@2025    92.9 (x1.01) | 2024 only    91.1 | NB/renewal 1.00 | loading 2.17%
+[   209s] wrote ./outputs_week2_v2/submission_week2_v2.csv rows=209,063 mean=341.73 max=6194
+
+==========================================================================================
+>>> REFERENCE POLICIES - technical premium on the emerging expense basis
+==========================================================================================
+   [20 reference-policy rows omitted from the shared copy: their fields are competition data]
+[   209s] done

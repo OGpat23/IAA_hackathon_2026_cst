@@ -1,0 +1,282 @@
+[     0s] loading emerging market from ./data/emerging
+[     1s] loading developed market from ./data/developping
+[     7s] emerging: 109,296 train rows, 209,063 test rows, 9,104 linked claims | developed: 2,409,311 train rows, 161,273 linked claims
+
+==========================================================================================
+>>> STEP 2 - WHAT CHANGED: emerging vs developed (same policy year 2023, raw incurred)
+==========================================================================================
+     line    market   exposure  freq  severity  pure_prem  loss_ratio  nb_share
+buildings developed 149989.636 0.045  9510.411    432.246       1.068     0.153
+ contents developed 149978.116 0.041  2848.241    116.947       0.673     0.153
+    motor developed 199685.213 0.140  4191.089    587.468       0.810     0.153
+buildings  emerging  11372.682 0.046 11269.149    514.275       1.344     0.120
+ contents  emerging  14107.773 0.035  2618.441     91.131       0.651     0.117
+    motor  emerging  18864.670 0.189  2294.110    432.806       0.616     0.121
+
+median claim size by peril (2023 losses):
+m                            developed  emerging  em/dev
+line      peril                                         
+buildings accidental_damage      771.0     581.0    0.75
+          escape_of_water       3834.0    2904.0    0.76
+          fire                 28567.0   30042.0    1.05
+          flood                23397.0   18571.0    0.79
+          storm                 2325.0    1596.0    0.69
+          subsidence           15465.0   10899.0    0.70
+contents  accidental_damage      513.0     377.0    0.73
+          escape_of_water       1813.0    1503.0    0.83
+          flood                 6601.0    5377.0    0.81
+          theft                 2300.0    2026.0    0.88
+motor     bodily_injury         9812.0    5989.0    0.61
+          glass_hail             788.0     509.0    0.65
+          own_damage             967.0     638.0    0.66
+          theft                 4515.0    2335.0    0.52
+          third_party_prop      2618.0    1696.0    0.65
+
+portfolio mix shift (broker book transfer):
+           train_2024_nb_share  test_2025_nb_share  train_2024_age17_24  test_2025_age17_24
+line                                                                                       
+buildings                0.153               0.759                0.189               0.247
+contents                 0.153               0.761                0.194               0.247
+motor                    0.153               0.760                0.191               0.248
+
+climate by year:
+      hail_days  wind_exposure_index  freezing_days  dry_summer_index  wildfire_index  rainfall_mm  mean_temperature_c          m
+year                                                                                                                             
+2023      13.97                 4.68          21.02              0.68            0.50      1380.81               15.30   emerging
+2024      17.08                 5.41          17.49              0.71            0.55      1375.09               15.78   emerging
+2025      11.41                 5.11          28.86              0.60            0.53      1250.66               14.22   emerging
+2021       5.64                 4.60          41.27              0.49            0.18      1143.82               12.22  developed
+2022       6.72                 4.51          36.98              0.47            0.15      1023.51               12.43  developed
+2023       6.26                 4.39          34.70              0.55            0.13       980.69               13.08  developed
+2024       6.77                 4.35          39.48              0.59            0.16      1036.39               12.97  developed
+2025       5.89                 4.88          35.89              0.49            0.17      1039.97               12.62  developed
+
+new-business / renewal raw pure-premium ratio:
+          nb_relativity         
+market        developed emerging
+line                            
+buildings          1.08     0.82
+contents           1.01     1.31
+motor              1.36     1.59
+
+==========================================================================================
+>>> STEP 3a - REPORTING DELAY CHECK before carrying the developed pattern over
+==========================================================================================
+m                            developed  emerging  ratio_p90  carry_over_ok
+line      peril                                                           
+buildings accidental_damage       23.0      27.6       1.20           True
+          escape_of_water         35.0      33.0       0.94           True
+          fire                    11.0      12.2       1.11           True
+          flood                   24.0      24.9       1.04           True
+          storm                   25.0      26.0       1.04           True
+          subsidence             300.2     189.8       0.63           True
+contents  accidental_damage       24.0      22.0       0.92           True
+          escape_of_water         34.0      44.0       1.29           True
+          flood                   25.0      24.0       0.96           True
+          theft                   12.0      13.3       1.11           True
+motor     bodily_injury          412.0     346.5       0.84           True
+          glass_hail              17.0      18.0       1.06           True
+          own_damage              24.0      24.0       1.00           True
+          theft                   12.0      12.0       1.00           True
+          third_party_prop        47.0      46.0       0.98           True
+
+==========================================================================================
+>>> STEP 3b - SEVERITY TREND: emerging (1 step) credibility-blended with developed (2 steps)
+==========================================================================================
+  motor     developed +4.83% | emerging +7.51% (se 0.026, 4 peril cells) | Z=0.56 -> used +6.33% p.a.
+  buildings developed +5.83% | emerging +8.77% (se 0.068, 4 peril cells) | Z=0.16 -> used +6.30% p.a.
+  contents  developed +2.32% | emerging -0.65% (se 0.071, 4 peril cells) | Z=0.15 -> used +1.86% p.a.
+
+IBNR uplift applied to emerging incurred (ultimate / reported):
+loss_year  2022   2023   2024
+line                         
+buildings   NaN  1.002  1.050
+contents    NaN  1.002  1.030
+motor       1.0  1.020  1.169
+
+==========================================================================================
+>>> STEP 3c - EMERGING EXPERIENCE at 2025 cost level (developed for IBNR, trended)
+==========================================================================================
+                 exposure     n_dev         y_tot         prem   freq  pp_2025  LR_2025
+line      year                                                                         
+buildings 2023  11372.682   520.207  6.624424e+06   4353303.32  0.046  582.486    1.522
+          2024  12095.568   566.468  4.174324e+06   5459609.57  0.047  345.112    0.765
+contents  2023  14107.773   491.708  1.336481e+06   1974906.26  0.035   94.734    0.677
+          2024  14950.586   522.515  1.361816e+06   2460397.38  0.035   91.088    0.553
+motor     2023  18864.670  3578.440  9.417533e+06  13247857.63  0.190  499.215    0.711
+          2024  20104.291  3765.869  1.007741e+07  15669551.53  0.187  501.256    0.643
+
+==========================================================================================
+>>> STEP 5 - DEVELOPED PRIOR: Part 1 market model on features both markets share
+==========================================================================================
+[    30s] developed prior loaded from cache dev_prior_26833decb7.parquet
+
+==========================================================================================
+>>> STEP 6 - SHIFT / LEAK GUARDRAIL (leak = test resembles *claim-free* training rows)
+==========================================================================================
+     line                   feature  psi_train_vs_test  psi_noclaim_vs_test  leak_signature
+ contents             pol_hist_freq             8.0183               8.0156           False
+buildings             pol_hist_freq             7.0011               7.0038           False
+    motor             pol_hist_freq             5.5893               6.0643           False
+buildings            cust_hist_freq             4.7798               5.4556           False
+ contents            cust_hist_freq             3.7533               3.7491           False
+    motor            cust_hist_freq             2.7612               2.9144           False
+ contents               cust_hist_e             1.3455               1.3223           False
+    motor               cust_hist_e             1.2348               1.2278           False
+buildings               cust_hist_e             0.8078               0.8010           False
+    motor customer_service_contacts             0.1333               0.0008            True
+leak signature: ['customer_service_contacts', 'prior_log']
+   human-review override kept 'prior_log': developed-market risk score built only from vetted inputs (customer_service_contacts excluded); any genuine risk score separates claim / claim-free rows, so the leak heuristic does not apply to model outputs (reviewed 2026-10-27, motor PSI 0.029)
+validation weights (new business, renewal): {'motor': (5.5, 0.28), 'buildings': (5.51, 0.28), 'contents': (5.58, 0.28)}
+
+==========================================================================================
+>>> STEP 7a - 5-FOLD CV grouped by policy, 2023-24 pooled at 2025 cost level
+==========================================================================================
+[    58s]   motor     rounds A/B/C: [(376, 170, 10), (122, 47, 127), (197, 147, 31), (243, 192, 10), (168, 120, 175)] | GLM slope on developed prior 0.91 | large-loss loading 6.22%
+[    71s]   buildings rounds A/B/C: [(76, 30, 10), (24, 45, 10), (25, 29, 13), (157, 117, 61), (51, 54, 10)] | GLM slope on developed prior 1.05 | large-loss loading 4.09%
+[    93s]   contents  rounds A/B/C: [(84, 70, 10), (451, 178, 660), (116, 101, 18), (133, 150, 134), (94, 54, 27)] | GLM slope on developed prior 1.07 | large-loss loading 1.55%
+          buildings_testmix  contents_testmix  motor_testmix  ALL_testmix  ALL_unweighted  new_business_only     P/A  P/A_new_business
+exp_rate             0.0705            0.0980         0.0152       0.1048          0.0850             0.1080  1.0000            0.7917
+pred_A               0.0823            0.1147         0.0312       0.1188          0.1149             0.1151  0.9978            0.8925
+pred_B               0.0847            0.1301         0.0344       0.1237          0.1191             0.1203  0.9995            0.8864
+pred_C               0.1044            0.1361         0.0312       0.1286          0.1323             0.1215  0.9999            0.9045
+pred_P               0.1093            0.1460         0.0365       0.1342          0.1345             0.1287  1.0041            0.9059
+
+==========================================================================================
+>>> STEP 7b - BLEND WEIGHTS per line (CV, D2 vs developed actuals)
+==========================================================================================
+  motor     weights A/B/C/P = (0.3, 0.0, 0.0, 0.7) -> CV D2 (2025 mix) 0.0378 (best single: 0.0365)
+  buildings weights A/B/C/P = (0.2, 0.0, 0.0, 0.8) -> CV D2 (2025 mix) 0.1115 (best single: 0.1093)
+  contents  weights A/B/C/P = (0.0, 0.0, 0.0, 1.0) -> CV D2 (2025 mix) 0.1460 (best single: 0.1460)
+
+==========================================================================================
+>>> STEP 7b2 - NEW-BUSINESS CALIBRATION (robust out-of-fold A/E, Z = n / (n + 300 claims))
+==========================================================================================
+  motor     new business: claims    724 A/E 1.070 by year {2023: 1.274, 2024: 0.93} Z 0.71 -> factor 1.050
+  motor     renewal     : claims   6620 A/E 0.993 by year {2023: 0.977, 2024: 1.009} Z 0.96 -> factor 0.993
+  buildings new business: claims     79 A/E 1.069 by year {2023: 1.268, 2024: 0.94} Z 0.21 -> factor 1.014
+  buildings renewal     : claims   1007 A/E 0.994 by year {2023: 0.981, 2024: 1.006} Z 0.77 -> factor 0.995
+  contents  new business: claims    104 A/E 1.303 by year {2023: 1.091, 2024: 1.461} Z 0.26 -> factor 1.078
+  contents  renewal     : claims    910 A/E 0.974 by year {2023: 0.994, 2024: 0.953} Z 0.75 -> factor 0.980
+note: pred_blend_cal is in-sample for the 2 calibration factors per line
+
+                buildings_testmix  contents_testmix  motor_testmix  ALL_testmix  ALL_unweighted  new_business_only     P/A  P/A_new_business
+exp_rate                   0.0705            0.0980         0.0152       0.1048          0.0850             0.1080  1.0000            0.7917
+pred_A                     0.0823            0.1147         0.0312       0.1188          0.1149             0.1151  0.9978            0.8925
+pred_B                     0.0847            0.1301         0.0344       0.1237          0.1191             0.1203  0.9995            0.8864
+pred_C                     0.1044            0.1361         0.0312       0.1286          0.1323             0.1215  0.9999            0.9045
+pred_P                     0.1093            0.1460         0.0365       0.1342          0.1345             0.1287  1.0041            0.9059
+pred_blend                 0.1115            0.1460         0.0378       0.1355          0.1340             0.1307  1.0023            0.9008
+pred_blend_cal             0.1110            0.1475         0.0414       0.1374          0.1343             0.1333  0.9993            0.9378
+
+==========================================================================================
+>>> STEP 7c - TEMPORAL BACK-TEST: train 2023 -> score 2024 (2024 targets developed, not trended)
+==========================================================================================
+                buildings_testmix  contents_testmix  motor_testmix  ALL_testmix  ALL_unweighted  new_business_only     P/A  P/A_new_business
+pred_A                     0.0324            0.0621         0.1065       0.1208          0.1089             0.1162  1.1805            1.3239
+pred_B                     0.0321            0.0867         0.1091       0.1270          0.1143             0.1227  1.1628            1.3162
+pred_C                     0.0537            0.0841         0.1115       0.1332          0.1247             0.1272  1.1436            1.2629
+pred_P                     0.0582            0.1287         0.1128       0.1440          0.1308             0.1401  1.1417            1.2370
+pred_blend                 0.0543            0.1287         0.1144       0.1438          0.1291             0.1406  1.1511            1.2629
+pred_blend_cal             0.0526            0.1328         0.1130       0.1435          0.1291             0.1400  1.1486            1.3127
+note: pred_blend_cal uses NB factors estimated on CV folds that include 2024 -> optimistic
+P/A by line pred_blend      {'buildings': 1.691, 'contents': 0.971, 'motor': 0.953} | new business only {'buildings': 2.128, 'contents': 0.696, 'motor': 1.105}
+P/A by line pred_blend_cal  {'buildings': 1.686, 'contents': 0.961, 'motor': 0.952} | new business only {'buildings': 2.159, 'contents': 0.751, 'motor': 1.16}
+
+lift (CV, cost per exposure by predicted decile):
+         pred_pp                     act_pp                 
+line   buildings contents   motor buildings contents   motor
+decile                                                      
+0          182.0     30.0   218.0     116.0     29.0   236.0
+1          237.0     41.0   282.0     318.0     48.0   222.0
+2          275.0     49.0   323.0     127.0     54.0   291.0
+3          310.0     57.0   361.0     323.0     62.0   398.0
+4          347.0     66.0   404.0     226.0     74.0   473.0
+5          386.0     76.0   457.0     422.0     67.0   415.0
+6          434.0     89.0   526.0     594.0     68.0   596.0
+7          496.0    106.0   629.0     365.0     85.0   597.0
+8          604.0    133.0   791.0     834.0    154.0   785.0
+9         1361.0    264.0  1084.0    1286.0    298.0  1060.0
+
+==========================================================================================
+>>> STEP 8 - FINAL FIT 2023-2024 -> 2025
+==========================================================================================
+[   121s]   motor     rounds {'A': 243, 'B': 148, 'C': 77} | 2025 cost/exp    576.4 vs 2023-24@2025    500.3 (x1.15) | 2024 only    501.3 | NB/renewal relativity 1.39
+      component A: weight 0.3 level 0.968 corr 0.922
+      component P: weight 0.7 level 0.960 corr 0.990
+      new-business calibration moves line level by x1.039
+[   125s]   buildings rounds {'A': 73, 'B': 60, 'C': 22} | 2025 cost/exp    479.9 vs 2023-24@2025    460.1 (x1.04) | 2024 only    345.1 | NB/renewal relativity 1.05
+      component A: weight 0.2 level 0.998 corr 0.871
+      component P: weight 0.8 level 0.988 corr 0.997
+      new-business calibration moves line level by x1.010
+[   137s]   contents  rounds {'A': 193, 'B': 121, 'C': 186} | 2025 cost/exp     99.2 vs 2023-24@2025     92.9 (x1.07) | 2024 only     91.1 | NB/renewal relativity 1.14
+      component P: weight 1.0 level 0.947 corr 0.998
+      new-business calibration moves line level by x1.056
+[   138s] wrote ./outputs_week2/submission_week2.csv rows=209,063 mean=354.58 max=4331
+
+==========================================================================================
+>>> STEP 9 - TECHNICAL PREMIUM SENSE-CHECK on reference policies (emerging expense basis)
+==========================================================================================
+   [20 reference-policy rows omitted from the shared copy: their fields are competition data]
+note: cat reinsurance loaded on property lines only; fixed expense pro-rated by exposure
+technical / written premium by line: {'buildings': 4.56, 'contents': 1.89, 'motor': 1.88}
+
+==========================================================================================
+>>> STEP 10 - DATA-QUALITY LOG
+==========================================================================================
+   market      split      line                                                                          issue  rows
+ emerging      train     motor                    exposure > 1 (days / 370-day rows) -> recomputed from dates   189
+ emerging      train buildings                    exposure > 1 (days / 370-day rows) -> recomputed from dates   117
+ emerging      train buildings                                          sum_insured ~1000x too large -> /1000    53
+ emerging      train buildings                               construction_type BRK/STN/WOD/MIX codes -> names 27447
+ emerging      train  contents                    exposure > 1 (days / 370-day rows) -> recomputed from dates   146
+ emerging      train  contents                                          sum_insured ~1000x too large -> /1000    57
+ emerging       test     motor                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+ emerging       test buildings                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+ emerging       test buildings                                          sum_insured ~1000x too large -> /1000   104
+ emerging       test buildings                               construction_type BRK/STN/WOD/MIX codes -> names 52295
+ emerging       test  contents                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+ emerging       test  contents                                          sum_insured ~1000x too large -> /1000   135
+ emerging        all       all                                   occupation text normalised (80 -> 40 levels)    80
+ emerging      train       all                                       repudiated claims (excluded from target)   120
+ emerging      train       all                                claims re-linked to nearest policy row (<= 31d)     2
+ emerging      train       all       claims outside any policy period dropped (loss years [2021, 2022, 2023])    34
+developed      train     motor                    exposure > 1 (days / 370-day rows) -> recomputed from dates  3991
+developed      train buildings                    exposure > 1 (days / 370-day rows) -> recomputed from dates  3044
+developed      train buildings                                          sum_insured ~1000x too large -> /1000  1395
+developed      train buildings                               construction_type BRK/STN/WOD/MIX codes -> names     0
+developed      train  contents                    exposure > 1 (days / 370-day rows) -> recomputed from dates  3088
+developed      train  contents                                          sum_insured ~1000x too large -> /1000  1402
+developed       test     motor                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+developed       test buildings                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+developed       test buildings                                          sum_insured ~1000x too large -> /1000   370
+developed       test buildings                               construction_type BRK/STN/WOD/MIX codes -> names     0
+developed       test  contents                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+developed       test  contents                                          sum_insured ~1000x too large -> /1000   360
+developed        all       all                                   occupation text normalised (20 -> 20 levels)    20
+developed      train       all                                       repudiated claims (excluded from target)  1711
+developed      train       all                                claims re-linked to nearest policy row (<= 31d)   245
+developed      train       all claims outside any policy period dropped (loss years [2020, 2021, 2022, 2023])   165
+ emerging assumption       all                  severity trend p.a. motor=6.3%, buildings=6.3%, contents=1.9%     0
+ emerging  reference     motor                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+ emerging  reference buildings                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+ emerging  reference buildings                                          sum_insured ~1000x too large -> /1000     0
+ emerging  reference buildings                               construction_type BRK/STN/WOD/MIX codes -> names     7
+ emerging  reference  contents                    exposure > 1 (days / 370-day rows) -> recomputed from dates     0
+ emerging  reference  contents                                          sum_insured ~1000x too large -> /1000     0
+ emerging governance       all                         leak guardrail flagged 'prior_log' - kept after review     0
+
+==========================================================================================
+>>> STEP 10b - UNCERTAINTY: line-level 2025 cost under alternative assumptions
+==========================================================================================
+line                          buildings  contents  motor
+scenario                                                
+CV pred/actual (calibrated)       1.005     0.971  1.000
+back-test pred/actual 2024        1.686     0.961  0.952
+emerging-only model (A)           0.998     0.974  0.968
+level = 2024 experience only      0.750     0.981  1.002
+no new-business calibration       0.990     0.947  0.962
+pure carry-over (P)               0.988     0.947  0.960
+trend = developed only            0.996     1.004  0.986
+trend = emerging only             1.023     0.975  1.011
+[   143s] done
